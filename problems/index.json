@@ -1,0 +1,121 @@
+[
+  {
+    "problem_id": "p001",
+    "slug": "library_assignment_order",
+    "title": "Library Assignment Order",
+    "status": "solved",
+    "tags": [
+      "greedy",
+      "simulation",
+      "bankers-algorithm",
+      "safe-sequence"
+    ],
+    "match_hints": [
+      "available books in the library",
+      "issued books",
+      "required books",
+      "optimal sequence of studentIDs",
+      "if it is not possible output -1"
+    ],
+    "sample_input_prefix": [
+      "3",
+      "2 2 3",
+      "3 3",
+      "2 4 0"
+    ],
+    "sample_output": "2 0 1",
+    "notes": [
+      "Choose the smallest studentID when multiple students can finish.",
+      "A student can finish when current available books cover required minus issued.",
+      "After finishing, the student returns all currently issued books."
+    ],
+    "path": "problems/p001_library_assignment_order/solution.py"
+  },
+  {
+    "problem_id": "p002",
+    "slug": "case_insensitive_substring_count",
+    "title": "Case-Insensitive Substring Count",
+    "status": "solved",
+    "tags": [
+      "string",
+      "substring",
+      "case-insensitive",
+      "simulation"
+    ],
+    "match_hints": [
+      "countOccur(parent, sub)",
+      "disregard the case of the letters",
+      "number of occurrences of the second string in the first string",
+      "if no occurrence of Sub is found in Parent then print 0"
+    ],
+    "sample_input_prefix": [
+      "TimisplayinginthehouseofTimwiththetoysofTim",
+      "Tim"
+    ],
+    "sample_output": "3",
+    "notes": [
+      "Convert both strings to the same case before matching.",
+      "The archived solution counts overlapping matches.",
+      "If sub is longer than parent, the answer is 0."
+    ],
+    "path": "problems/p002_case_insensitive_substring_count/solution.py"
+  },
+  {
+    "problem_id": "p003",
+    "slug": "dictionary_subsequence_filter",
+    "title": "Dictionary Subsequence Filter",
+    "status": "solved",
+    "tags": [
+      "string",
+      "subsequence",
+      "binary-search",
+      "dictionary"
+    ],
+    "match_hints": [
+      "given a dictionary of N words and a master word",
+      "formed by deleting some characters of the given master word",
+      "in the order that the words appear in the dictionary",
+      "master word"
+    ],
+    "sample_input_prefix": [
+      "master word",
+      "N",
+      "dictionary words"
+    ],
+    "sample_output": "matching words in dictionary order",
+    "notes": [
+      "A valid dictionary word must be a subsequence of the master word.",
+      "The archived solution uses character positions plus binary search.",
+      "If no word matches, print -1."
+    ],
+    "path": "problems/p003_dictionary_subsequence_filter/solution.py"
+  },
+  {
+    "problem_id": "p004",
+    "slug": "palindromic_sales_list",
+    "title": "Palindromic Sales List",
+    "status": "solved",
+    "tags": [
+      "array",
+      "greedy",
+      "two-pointers",
+      "palindrome"
+    ],
+    "match_hints": [
+      "salesData",
+      "palindromicSalesList",
+      "add together any two consecutive elements",
+      "convert the given list into a palindromic list of maximum length"
+    ],
+    "sample_input_prefix": [
+      "num",
+      "salesData"
+    ],
+    "sample_output": "palindromic list of maximum length",
+    "notes": [
+      "Maximum length is equivalent to minimum number of merges.",
+      "Merge the side with the smaller running sum until both sides are equal."
+    ],
+    "path": "problems/p004_palindromic_sales_list/solution.py"
+  }
+]
