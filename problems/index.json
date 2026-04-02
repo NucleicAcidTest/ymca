@@ -177,5 +177,86 @@
       "Between two ON systems, the optimal cost is segment span minus the largest adjacent gap."
     ],
     "path": "problems/p006_minimum_cable_length/solution.py"
+  },
+  {
+    "problem_id": "p007",
+    "slug": "smallest_registration_permutation",
+    "title": "Smallest Registration Permutation",
+    "status": "solved",
+    "tags": [
+      "math",
+      "digits",
+      "sorting",
+      "greedy"
+    ],
+    "match_hints": [
+      "car racing game",
+      "registration number",
+      "smallest permutation",
+      "never starts with zero"
+    ],
+    "sample_input_prefix": [
+      "integer num"
+    ],
+    "sample_output": "smallest digit permutation without leading zero",
+    "notes": [
+      "Positive numbers use ascending order with the first non-zero digit moved to the front.",
+      "Negative numbers use descending order on the absolute digits, then restore the negative sign."
+    ],
+    "path": "problems/p007_smallest_registration_permutation/solution.py"
+  },
+  {
+    "problem_id": "p008",
+    "slug": "remove_duplicates_preserve_order",
+    "title": "Remove Duplicates Preserve Order",
+    "status": "solved",
+    "tags": [
+      "array",
+      "hash-set",
+      "deduplication"
+    ],
+    "match_hints": [
+      "remove all the duplicate numbers",
+      "contains only distinct numbers",
+      "same order as they appear in the input list"
+    ],
+    "sample_input_prefix": [
+      "8",
+      "1 1 3 2 1 4 5 4"
+    ],
+    "sample_output": "1 3 2 4 5",
+    "notes": [
+      "Keep the first occurrence of each value.",
+      "Use a set for O(1) duplicate checks."
+    ],
+    "path": "problems/p008_remove_duplicates_preserve_order/solution.py"
+  },
+  {
+    "problem_id": "p009",
+    "slug": "lru_cache_misses",
+    "title": "LRU Cache Misses",
+    "status": "solved",
+    "tags": [
+      "cache",
+      "lru",
+      "simulation"
+    ],
+    "match_hints": [
+      "Least Recently Used (LRU) cache",
+      "number of cache misses",
+      "virtual memory management system",
+      "page requests"
+    ],
+    "sample_input_prefix": [
+      "6",
+      "1 2 1 3 1 2",
+      "2"
+    ],
+    "sample_output": "4",
+    "notes": [
+      "Use recency order to simulate LRU.",
+      "On a miss with full cache, evict the least recently used page."
+    ],
+    "path": "problems/p009_lru_cache_misses/solution.py"
   }
 ]

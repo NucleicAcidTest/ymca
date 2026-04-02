@@ -1,4 +1,4 @@
-from problems.p006_minimum_cable_length.solution import main
+from problems.p009_lru_cache_misses.solution import main
 
 
 if __name__ == "__main__":
