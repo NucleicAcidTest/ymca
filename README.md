@@ -1,6 +1,6 @@
-# SHL Problem Archive
+# Problem Archive
 
-This repository stores coding interview problems, their Python solutions, and a small local index for quick lookup.
+This repository stores coding problems, their Python solutions, and a small local index for quick lookup.
 
 ## Layout
 
