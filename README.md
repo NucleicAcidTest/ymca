@@ -19,3 +19,20 @@ When a new problem is solved:
 4. Update `problems/index.json`.
 
 This makes repeated questions easy to detect from their statement, sample input/output, or core keywords.
+
+## Fast Duplicate Lookup
+
+Use the local matcher when you want to check whether an incoming statement is the same as a previously solved problem:
+
+```bash
+python lookup.py problem.txt
+```
+
+You can also pass the statement inline or pipe it through stdin:
+
+```bash
+python lookup.py --query "Least Recently Used (LRU) cache count the number of cache misses"
+cat problem.txt | python lookup.py
+```
+
+The matcher keeps a local cache in `.cache/problem_lookup_cache.json`. When the same problem text appears again, it is returned straight from the cache instead of re-scoring the full archive.

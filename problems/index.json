@@ -164,17 +164,22 @@
       "systems are placed in a row",
       "ON (1) or OFF (0)",
       "minimum length of the cable",
-      "distance of the systems from the first system"
+      "distance of the systems from the first system",
+      "connect everything except the largest adjacent gap",
+      "systemState_size",
+      "dist_size"
     ],
     "sample_input_prefix": [
-      "3",
-      "1 0 0",
-      "1 5 6"
+      "7",
+      "1 0 1 1 0 1 1",
+      "7",
+      "1 5 6 7 8 9 17"
     ],
-    "sample_output": "5",
+    "sample_output": "2",
     "notes": [
       "OFF systems before the first ON and after the last ON form forced chains.",
-      "Between two ON systems, the optimal cost is segment span minus the largest adjacent gap."
+      "Between two ON systems, the optimal cost is segment span minus the largest adjacent gap.",
+      "The archived parser accepts both the older 3-line input and the newer 4-line input with dist_size."
     ],
     "path": "problems/p006_minimum_cable_length/solution.py"
   },
@@ -258,5 +263,147 @@
       "On a miss with full cache, evict the least recently used page."
     ],
     "path": "problems/p009_lru_cache_misses/solution.py"
+  },
+  {
+    "problem_id": "p010",
+    "slug": "remove_vowels_from_string",
+    "title": "Remove Vowels From String",
+    "status": "solved",
+    "tags": [
+      "string",
+      "filter",
+      "vowels"
+    ],
+    "match_hints": [
+      "the vowels of the english alphabet are a e i o u A E I O U",
+      "write an algorithm to eliminate all vowels from a given string",
+      "print a string that excludes all the vowels of the given input string",
+      "the input string contains english letters only"
+    ],
+    "sample_input_prefix": [
+      "haveaniceday"
+    ],
+    "sample_output": "hvncdy",
+    "notes": [
+      "Remove both lowercase and uppercase vowels.",
+      "Keep all remaining characters in their original order."
+    ],
+    "path": "problems/p010_remove_vowels_from_string/solution.py"
+  },
+  {
+    "problem_id": "p011",
+    "slug": "maximum_meeting_attendees",
+    "title": "Maximum Meeting Attendees",
+    "status": "solved",
+    "tags": [
+      "graph",
+      "functional-graph",
+      "cycle",
+      "topological-pruning"
+    ],
+    "match_hints": [
+      "N number of CEOs will be attending",
+      "invitation ID from 0 to N-1",
+      "favorite CEO whom they like",
+      "seated next to the person they like",
+      "maximum number of CEOs who will attend the meeting"
+    ],
+    "sample_input_prefix": [
+      "N",
+      "personIDs[0] personIDs[1] ... personIDs[N-1]"
+    ],
+    "sample_output": "maximum attendees count",
+    "notes": [
+      "Take the maximum of the largest cycle and the total contribution of all 2-cycles with their best incoming chains.",
+      "Use indegree pruning to compute the longest chain reaching each node outside cycles."
+    ],
+    "path": "problems/p011_maximum_meeting_attendees/solution.py"
+  },
+  {
+    "problem_id": "p012",
+    "slug": "perfect_number_check",
+    "title": "Perfect Number Check",
+    "status": "solved",
+    "tags": [
+      "math",
+      "number-theory",
+      "divisors"
+    ],
+    "match_hints": [
+      "a perfect number is a number which is equal to the sum of all its factors",
+      "check whether N is a perfect number or not",
+      "print 1 if the given number is a perfect number otherwise print 0",
+      "0 <= N <= 10^5"
+    ],
+    "sample_input_prefix": [
+      "N"
+    ],
+    "sample_output": "1 if perfect, otherwise 0",
+    "notes": [
+      "Proper divisors exclude the number itself.",
+      "0 and 1 are not perfect numbers.",
+      "Check divisors in pairs up to sqrt(N) for O(sqrt(N)) time."
+    ],
+    "path": "problems/p012_perfect_number_check/solution.py"
+  },
+  {
+    "problem_id": "p013",
+    "slug": "alternate_sort_of_list",
+    "title": "Alternate Sort Of List",
+    "status": "solved",
+    "tags": [
+      "array",
+      "sorting",
+      "simulation"
+    ],
+    "match_hints": [
+      "alternate sort of a list",
+      "alternate elements starting from the first position",
+      "after sorting it in an ascending order",
+      "print space-separated integers representing the alternately sorted elements"
+    ],
+    "sample_input_prefix": [
+      "8",
+      "3 5 1 5 9 10 2 6"
+    ],
+    "sample_output": "1 3 5 9",
+    "notes": [
+      "Sort ascending first, then keep indices 0, 2, 4, ...",
+      "The Java and Python screenshots are the same problem statement.",
+      "The archived solution reads N, then the next N integers."
+    ],
+    "path": "problems/p013_alternate_sort_of_list/solution.py"
+  },
+  {
+    "problem_id": "p014",
+    "slug": "connected_city_clusters",
+    "title": "Connected City Clusters",
+    "status": "solved",
+    "tags": [
+      "graph",
+      "connected-components",
+      "dfs",
+      "matrix"
+    ],
+    "match_hints": [
+      "city clusters",
+      "cities are connected by a network of roads",
+      "roads are bi-directional",
+      "total number of connected clusters",
+      "entry i j of the matrix is 1 if the ith city connects to the jth city"
+    ],
+    "sample_input_prefix": [
+      "5 5",
+      "0 0 0 0 0",
+      "0 0 1 0 0",
+      "0 1 0 1 0"
+    ],
+    "sample_output": "3",
+    "notes": [
+      "Treat the matrix as an undirected graph adjacency matrix.",
+      "The answer is the number of connected components.",
+      "The archived parser accepts the screenshot format: row count, column count, then matrix rows."
+    ],
+    "path": "problems/p014_connected_city_clusters/solution.py"
   }
 ]
