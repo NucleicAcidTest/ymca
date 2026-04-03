@@ -1,9 +1,9 @@
 ---
-name: problem-lookup-workflow
-description: Use this skill when working in the shl problem archive and the main goal is to quickly check whether a screenshot or problem statement already exists in the local archive. Query first with lookup.py, return the match result in a compact format, and only continue to overwrite, archive, or solve when the user explicitly asks or the request already says to do so.
+name: shl-problem-lookup
+description: Use this skill when working in the shl problem archive and the main goal is to quickly check whether a screenshot or problem statement already exists in the local archive. Query first with lookup.py, return the match result in a compact format, and if there is no local match then continue by solving the problem and returning the solution unless the user explicitly asked for lookup only. Ask about archiving only after returning the solve result.
 ---
 
-# Problem Lookup Workflow
+# SHL Problem Lookup
 
 Use this skill for fast problem-query work in this repository.
 
@@ -11,7 +11,8 @@ The priority is:
 
 1. Query fast
 2. Return the local match result clearly
-3. Only then decide whether to update, archive, or solve
+3. If there is no local match, solve and return
+4. Only then decide whether to archive or update repository files
 
 ## When To Use
 
@@ -41,6 +42,8 @@ Most problems in this repo come from similar coding-assessment screenshots. Read
 - visible template code
 - whether `main` already exists
 - whether the platform says `Write your code here`
+
+For this repository, treat the visible assessment language as contextual evidence, not the default output language. The default solution language for `shl` archive work is Python 3.12 unless the user explicitly asks for another language or explicitly asks for a direct submission snippet matching the screenshot language.
 
 3. Bottom test area:
 - predefined test inputs
@@ -88,19 +91,25 @@ query summary: ...
 next step: wait / solve / archive
 ```
 
-4. Stop after the query result unless the user explicitly wants more, or the request already says things like:
+4. Stop after the query result only when the user explicitly asked for lookup only.
+
+5. If lookup misses and the user did not explicitly limit the task to lookup-only, continue automatically into solving.
+
+6. When further action is required:
+- If lookup returns a match, verify the statement, examples, and provided answer actually fit the matched archived problem before editing any files.
+- If lookup returns no match and the user only asked to check, report that clearly and stop.
+- If lookup returns no match, the default action is to solve the problem and return the solution first.
+- After returning a fresh solution for a miss, ask whether to archive it into the repository.
+- If lookup returns no match and the user already asked for solving or archiving, continue with the repository's archive workflow immediately.
+
+Treat these requests as permission to continue beyond lookup:
 - "if it exists, overwrite it; otherwise archive it"
 - "if there is a match, update the answer"
 - "if there is no match, solve it directly"
 
-5. When further action is required:
-- If lookup returns a match, verify the statement, examples, and provided answer actually fit the matched archived problem before editing any files.
-- If lookup returns no match and the user only asked to check, report that clearly and stop.
-- If lookup returns no match and the user also wants solving or archiving, continue with the repository's archive workflow.
-
 ## Follow-Up Actions
 
-Only do this section when the request clearly asks for it.
+Only do this section when the request clearly asks for it, or after a lookup miss has already been solved and the next decision is whether to archive.
 
 ### If Found And User Wants Update
 
@@ -119,7 +128,9 @@ Only do this section when the request clearly asks for it.
 ### If Not Found And User Wants A Fresh Solution
 
 - solve the problem normally
-- match the visible assessment template when one exists
+- default to Python 3.12 for this repository
+- only switch to the screenshot language when the user explicitly asks for that language or asks for a direct submission snippet that must match the visible platform language
+- match the visible assessment template when one exists, but do not let the visible language override the repository default on its own
 - use `input()`-style line reading by default for these screenshot-based tasks unless the visible template clearly expects EOF-style reading
 - keep `main` unchanged when the screenshot already provides one
 - write code only under `Write your code here` when the user asks for direct submission format
@@ -154,6 +165,7 @@ Also run sample input through the archived solution when sample I/O is available
 - Do not assume two problems are the same just because the implementation pattern looks similar.
 - If the user-provided answer screenshot obviously belongs to a different problem, stop and ask for the correct answer instead of overwriting anything.
 - If the user only asked to query, do not edit files.
+- If the user did not ask for lookup-only and there is no match, do not stop at "No local match"; solve the problem next.
 
 ## Query Writing Tips
 
@@ -168,7 +180,9 @@ Also run sample input through the archived solution when sample I/O is available
 
 If lookup fails and the workflow continues into solving:
 
-- Prefer the visible platform template over personal style.
+- For this repo, prefer Python 3.12 unless the user explicitly requests another language.
+- Prefer the visible platform template over personal style only after the output language is settled.
+- Do not infer Java, C++, or another language purely from the screenshot selector when the task is repo-centric lookup/solve work.
 - For Python assessment screenshots, default to simple `input()` parsing unless the visible code or problem format clearly needs something else.
 - Keep existing function names and `main` structure when visible.
 - Respect the shown language version.
@@ -182,11 +196,13 @@ If lookup fails and the workflow continues into solving:
 - When there is a match, give `problem_id`, title, path, score, and one short sentence on why it matched.
 - When there is no match, say that directly and do not start archiving unless requested.
 - If the user supplied both the problem and an answer screenshot and asked for the full workflow, query first, then continue.
-- If solving is required after a miss, briefly restate the inferred task before giving code or archiving.
+- If there is no local match, return both the miss result and the fresh solution in the same turn unless the user asked for lookup-only.
+- If solving is required after a miss, briefly restate the inferred task before giving code, then ask whether to archive it.
 
 ## Validation Checklist
 
 - The query result was returned before any optional editing work.
+- A lookup miss did not end the workflow when the user expected the problem to be solved.
 - The matched `problem_id` really describes the same problem.
 - The archived solution produces the expected sample output.
 - `tests/test_lookup.py` still passes.

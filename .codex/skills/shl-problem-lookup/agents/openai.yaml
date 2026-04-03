@@ -1,0 +1,3 @@
+display_name: SHL Problem Lookup
+short_description: Query the shl local archive first; on a miss, solve and return the problem unless the user asked for lookup only.
+default_prompt: Quickly check whether this problem already exists in the shl local archive, return the best local match in a compact format, and if there is no local match then solve and return the problem using the visible screenshot template constraints unless the user explicitly asked for lookup only.

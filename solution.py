@@ -1,4 +1,4 @@
-from problems.p017_minimum_straight_line_pickup_routes.solution import solve
+from problems.p019_kth_soldier_after_range_reversals.solution import solve
 
 
 if __name__ == "__main__":

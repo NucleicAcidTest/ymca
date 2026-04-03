@@ -128,6 +128,35 @@ class ProblemLookupTests(unittest.TestCase):
         self.assertEqual(result.problem_id, "p017")
         self.assertIn("lines.add((dx, dy))", result.solution_text)
 
+    def test_finds_minimum_juice_stalls_problem(self) -> None:
+        lookup = self._make_lookup()
+        query = """
+        John misses his bus and has to walk all his way from home to school.
+        The distance between home and school is D units. He starts with initial energy K.
+        There are N juice stalls on the way, with distances dist_i and juice liters lit_i.
+        Find the minimum number of juice stalls he should stop at to reach school, or output -1.
+        """
+
+        result = lookup.lookup(query)
+
+        self.assertIsNotNone(result)
+        self.assertEqual(result.problem_id, "p018")
+        self.assertIn("heapq.heappush", result.solution_text)
+
+    def test_finds_kth_soldier_after_range_reversals_problem(self) -> None:
+        lookup = self._make_lookup()
+        query = """
+        There are N soldiers standing in a line with IDs from 1 to N.
+        Each action round gives Li and Ri and reverses the whole segment from Li to Ri.
+        After Q rounds, find the ID of the soldier at the Kth position.
+        """
+
+        result = lookup.lookup(query)
+
+        self.assertIsNotNone(result)
+        self.assertEqual(result.problem_id, "p019")
+        self.assertIn("left + right - k", result.solution_text)
+
 
 if __name__ == "__main__":
     unittest.main()

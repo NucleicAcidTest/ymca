@@ -500,5 +500,74 @@
       "Normalize each direction vector by gcd and by folding opposite directions together."
     ],
     "path": "problems/p017_minimum_straight_line_pickup_routes/solution.py"
+  },
+  {
+    "problem_id": "p018",
+    "slug": "minimum_juice_stalls_to_reach_school",
+    "title": "Minimum Juice Stalls To Reach School",
+    "status": "solved",
+    "tags": [
+      "greedy",
+      "heap",
+      "priority-queue",
+      "minimum-stops"
+    ],
+    "match_hints": [
+      "john misses his bus and has to walk all his way from home to school",
+      "there are N juice stalls and each stall has a specific amount of juice in liters",
+      "his energy decreases by 1 unit for every unit of distance walked and increases by 1 for every liter of juice he consumes",
+      "find the minimum number of juice stalls at which he should stop to successfully reach the school or output -1"
+    ],
+    "sample_input_prefix": [
+      "4",
+      "5 7 8 10",
+      "2 3 1 5",
+      "15 5"
+    ],
+    "sample_output": "3",
+    "notes": [
+      "This follows the minimum refueling stops greedy pattern.",
+      "Use a max-heap containing juice amounts from all already reachable stalls.",
+      "Whenever John cannot reach the next checkpoint, consume juice from the best previously reachable stall.",
+      "A visible predefined case with distances 10 20 22 23 26, juice 10 2 5 1 1, and D K = 30 10 returns -1."
+    ],
+    "path": "problems/p018_minimum_juice_stalls_to_reach_school/solution.py"
+  },
+  {
+    "problem_id": "p019",
+    "slug": "kth_soldier_after_range_reversals",
+    "title": "Kth Soldier After Range Reversals",
+    "status": "solved",
+    "tags": [
+      "array",
+      "simulation",
+      "reverse-mapping",
+      "math"
+    ],
+    "match_hints": [
+      "there are N soldiers standing in a line and their personal IDs are from 1 to N",
+      "the major calls two numbers Li and Ri and soldiers swap in pairs until the segment is reversed",
+      "after Q action rounds find the ID of the soldier at the Kth position",
+      "input starts with N Q K followed by Q lines of Li Ri",
+      "soldiers stand at Li and Ri swap their positions",
+      "the process continues until Li plus m is greater than Ri minus m",
+      "the next Q lines consist of two space-separated integers Li and Ri representing the positions of the two soldiers",
+      "there are N soldiers standing in a line with IDs from 1 to N",
+      "each action round gives Li and Ri and reverses the whole segment from Li to Ri",
+      "after Q rounds find the ID of the soldier at the Kth position"
+    ],
+    "sample_input_prefix": [
+      "10 2 1",
+      "1 5",
+      "6 10"
+    ],
+    "sample_output": "5",
+    "notes": [
+      "Each operation reverses the whole interval [L, R].",
+      "Instead of simulating the full permutation, track the target position backward through the operations.",
+      "If K lies inside [L, R], the previous position was L + R - K.",
+      "A visible predefined case with input 10 2 10 / 5 9 / 2 3 returns 10."
+    ],
+    "path": "problems/p019_kth_soldier_after_range_reversals/solution.py"
   }
 ]
