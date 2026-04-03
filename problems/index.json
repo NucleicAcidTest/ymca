@@ -278,15 +278,20 @@
       "the vowels of the english alphabet are a e i o u A E I O U",
       "write an algorithm to eliminate all vowels from a given string",
       "print a string that excludes all the vowels of the given input string",
-      "the input string contains english letters only"
+      "the input string contains english letters only",
+      "in a town the houses are marked with english letters",
+      "renovate only the houses marked with vowels",
+      "identify the list of houses that will not be renovated"
     ],
     "sample_input_prefix": [
-      "haveaniceday"
+      "haveaniceday",
+      "MynameisAnthony"
     ],
     "sample_output": "hvncdy",
     "notes": [
       "Remove both lowercase and uppercase vowels.",
-      "Keep all remaining characters in their original order."
+      "Keep all remaining characters in their original order.",
+      "The same problem also appears with a houses-and-renovation story wrapper."
     ],
     "path": "problems/p010_remove_vowels_from_string/solution.py"
   },
@@ -405,5 +410,95 @@
       "The archived parser accepts the screenshot format: row count, column count, then matrix rows."
     ],
     "path": "problems/p014_connected_city_clusters/solution.py"
+  },
+  {
+    "problem_id": "p015",
+    "slug": "area_of_intersection_of_two_circles",
+    "title": "Area Of Intersection Of Two Circles",
+    "status": "solved",
+    "tags": [
+      "math",
+      "geometry",
+      "circles",
+      "floating-point"
+    ],
+    "match_hints": [
+      "finding the area of intersection of two circles",
+      "x1 y1 r1 represents the x and y coordinates of the center of the first circle and the radius of the first circle",
+      "x2 y2 r2 represents the x and y coordinates of the center of the second circle and the radius of the second circle",
+      "print a real number representing the area of intersection of two circles rounded up to 6 decimal places"
+    ],
+    "sample_input_prefix": [
+      "0 0 2",
+      "3 0 2"
+    ],
+    "sample_output": "1.813247",
+    "notes": [
+      "If the circles do not overlap, the area is 0.",
+      "If one circle lies completely inside the other, the area is the area of the smaller circle.",
+      "Otherwise use the two-sector minus two-triangle lens-area formula."
+    ],
+    "path": "problems/p015_area_of_intersection_of_two_circles/solution.py"
+  },
+  {
+    "problem_id": "p016",
+    "slug": "maximum_internship_salary",
+    "title": "Maximum Internship Salary",
+    "status": "solved",
+    "tags": [
+      "dynamic-programming",
+      "array",
+      "state-machine"
+    ],
+    "match_hints": [
+      "stephen is doing an internship in a company for N days",
+      "each day he may choose either an easy task or a difficult task or perform no task at all",
+      "he can only choose a difficult task on the first day or when he did not perform any work on the previous day",
+      "calculate the maximum salary he can get"
+    ],
+    "sample_input_prefix": [
+      "4",
+      "1 2",
+      "4 10",
+      "20 21"
+    ],
+    "sample_output": "33",
+    "notes": [
+      "Track three states after each day: skip, take easy, and take hard.",
+      "A hard task can only follow the skip state from the previous day.",
+      "The answer is the maximum value among the three end states."
+    ],
+    "path": "problems/p016_maximum_internship_salary/solution.py"
+  },
+  {
+    "problem_id": "p017",
+    "slug": "minimum_straight_line_pickup_routes",
+    "title": "Minimum Straight Line Pickup Routes",
+    "status": "solved",
+    "tags": [
+      "geometry",
+      "math",
+      "gcd",
+      "normalization"
+    ],
+    "match_hints": [
+      "transportation service in the city of nazeriana",
+      "identify the straight line routes starting from the base location",
+      "the number of routes are minimized and all the pickup locations are covered",
+      "first line contains N X0 Y0 and the next N lines contain Xi Yi"
+    ],
+    "sample_input_prefix": [
+      "3 0 0",
+      "1 1",
+      "-1 1",
+      "2 3"
+    ],
+    "sample_output": "3",
+    "notes": [
+      "Each route is a full straight line through the base location.",
+      "Pickup points that lie on the same line through the base share one route even if they are on opposite sides.",
+      "Normalize each direction vector by gcd and by folding opposite directions together."
+    ],
+    "path": "problems/p017_minimum_straight_line_pickup_routes/solution.py"
   }
 ]

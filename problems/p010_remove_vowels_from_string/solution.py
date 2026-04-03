@@ -1,13 +1,8 @@
-VOWELS = set("aeiouAEIOU")
-
-
-def removeVowels(engStr: str) -> str:
-    return "".join(ch for ch in engStr if ch not in VOWELS)
-
-
-def main() -> None:
-    engStr = input().rstrip("\n")
-    print(removeVowels(engStr))
+def main():
+    houses = input().strip()
+    vowels = set[str]("aeiouAEIOU")
+    result = "".join(char for char in houses if char not in vowels)
+    print(result)
 
 
 if __name__ == "__main__":
