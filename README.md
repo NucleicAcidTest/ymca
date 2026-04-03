@@ -36,3 +36,12 @@ cat problem.txt | python lookup.py
 ```
 
 The matcher keeps a local cache in `.cache/problem_lookup_cache.json`. When the same problem text appears again, it is returned straight from the cache instead of re-scoring the full archive.
+
+## Project Skill
+
+This repo includes a project-local Codex skill for the archive query workflow:
+
+- `.codex/skills/problem-lookup-workflow/SKILL.md`
+
+Use it when a thread needs to quickly check whether a screenshot or statement matches an existing archived problem. The skill is query-first: return the best local match fast, then only overwrite or archive if the request explicitly asks for that next step.
+If no local match is found and the workflow calls for solving, the skill also tells the agent to follow the visible coding-assessment template constraints before archiving the new problem.

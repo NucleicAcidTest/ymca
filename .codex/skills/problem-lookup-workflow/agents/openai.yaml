@@ -1,0 +1,3 @@
+display_name: Problem Lookup Workflow
+short_description: Query the local archive first, then only solve, update, or archive if needed, while respecting screenshot template constraints.
+default_prompt: Quickly check whether this problem already exists in the local archive, return the best local match in a compact format, and if there is no match and the workflow requires it, solve and archive the problem using the visible screenshot template constraints.
