@@ -157,6 +157,35 @@ class ProblemLookupTests(unittest.TestCase):
         self.assertEqual(result.problem_id, "p019")
         self.assertIn("left + right - k", result.solution_text)
 
+    def test_finds_street_lights_after_m_days_problem(self) -> None:
+        lookup = self._make_lookup()
+        query = """
+        Mr. Woods, an electrician, has made some faulty connections of eight street lights in Timberland city.
+        If the adjacent lights to a particular light are both ON or both OFF, that street light goes OFF the next night.
+        Otherwise, it remains ON. The two street lights at the ends have one adjacent light and the other side is assumed OFF.
+        Given the current state and the number of days M, print the state of the street lights after M days.
+        """
+
+        result = lookup.lookup(query)
+
+        self.assertIsNotNone(result)
+        self.assertEqual(result.problem_id, "p020")
+        self.assertIn("^", result.solution_text)
+
+    def test_finds_maximum_trading_days_without_same_town_problem(self) -> None:
+        lookup = self._make_lookup()
+        query = """
+        Moche Goldberg starts trading in N towns numbered 1 to N. Every day he sells his products in one
+        of the towns. The towns chosen on any two successive days should be different and a town i can be
+        chosen at most c_i times. Determine the maximum number of days when he can operate.
+        """
+
+        result = lookup.lookup(query)
+
+        self.assertIsNotNone(result)
+        self.assertEqual(result.problem_id, "p021")
+        self.assertIn("2 * (total - mx) + 1", result.solution_text)
+
 
 if __name__ == "__main__":
     unittest.main()

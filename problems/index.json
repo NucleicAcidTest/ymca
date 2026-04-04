@@ -569,5 +569,72 @@
       "A visible predefined case with input 10 2 10 / 5 9 / 2 3 returns 10."
     ],
     "path": "problems/p019_kth_soldier_after_range_reversals/solution.py"
+  },
+  {
+    "problem_id": "p020",
+    "slug": "street_lights_after_m_days",
+    "title": "Street Lights After M Days",
+    "status": "solved",
+    "tags": [
+      "array",
+      "simulation",
+      "bitwise",
+      "cycle-detection"
+    ],
+    "match_hints": [
+      "mr woods an electrician has made some faulty connections of eight street lights in timberland city",
+      "if the street lights adjacent to a particular light are both on or both off then that street light goes off the next night",
+      "otherwise it remains on the next night",
+      "the two street lights at the end of the road have only one single adjacent street light and the other adjacent light can be assumed to be always off",
+      "write an algorithm to output the state of the street lights after the given M days",
+      "the first line is currentState size the next line has N space separated integers and the last line is days",
+      "print eight space separated integers representing the state of the street lights after M days"
+    ],
+    "sample_input_prefix": [
+      "8",
+      "1 1 1 0 1 1 1 1",
+      "2"
+    ],
+    "sample_output": "0 0 0 0 0 1 1 0",
+    "notes": [
+      "The transition for each position is the XOR of its left and right neighbors, using 0 outside the array bounds.",
+      "The archived version follows the left-panel statement: N on the first line, N space-separated bits on the next line, and days on the last line.",
+      "Print the final state as space-separated digits to match the statement and example.",
+      "The solution keeps a compact binary-string fallback because the bottom predefined test widget is visually ambiguous in the screenshot.",
+      "Use cycle detection because the state space is finite and days can be large.",
+      "The example input 8 / 1 1 1 0 1 1 1 1 / 2 returns 0 0 0 0 0 1 1 0."
+    ],
+    "path": "problems/p020_street_lights_after_m_days/solution.py"
+  },
+  {
+    "problem_id": "p021",
+    "slug": "maximum_trading_days_without_same_town",
+    "title": "Maximum Trading Days Without Same Town",
+    "status": "solved",
+    "tags": [
+      "greedy",
+      "counting",
+      "scheduling",
+      "math"
+    ],
+    "match_hints": [
+      "moche goldberg starts trading in N towns numbered 1 to N",
+      "every day he sells his products in one of the towns",
+      "the towns chosen on any two successive days should be different",
+      "a town i can be chosen at most c_i times",
+      "determine the number of days when he can operate following the above mentioned rules"
+    ],
+    "sample_input_prefix": [
+      "3",
+      "7 2 3"
+    ],
+    "sample_output": "11",
+    "notes": [
+      "The answer depends only on the total number of available visits and the largest single-town count.",
+      "If the largest count is at most the sum of all other counts plus one, all visits can be scheduled.",
+      "Otherwise the longest valid sequence alternates the dominant town with all other visits, giving 2 * (total - max_count) + 1.",
+      "A visible predefined case with 4 and 2 2 2 2 returns 8."
+    ],
+    "path": "problems/p021_maximum_trading_days_without_same_town/solution.py"
   }
 ]

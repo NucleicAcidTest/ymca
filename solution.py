@@ -1,4 +1,4 @@
-from problems.p019_kth_soldier_after_range_reversals.solution import solve
+from problems.p021_maximum_trading_days_without_same_town.solution import solve
 
 
 if __name__ == "__main__":
