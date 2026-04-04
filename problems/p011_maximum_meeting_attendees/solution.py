@@ -1,4 +1,3 @@
-import sys
 from collections import deque
 
 
@@ -46,7 +45,14 @@ def find_max_ceos(person_ids):
 
 
 def main():
-    data = list(map(int, sys.stdin.buffer.read().split()))
+    data = []
+    try:
+        while True:
+            parts = input().split()
+            if parts:
+                data.extend(map(int, parts))
+    except EOFError:
+        pass
     if not data:
         return
 

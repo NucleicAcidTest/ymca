@@ -1,10 +1,8 @@
-import sys
-
-
-def solve():
-    input = sys.stdin.readline
-
-    n = int(input())
+def main():
+    try:
+        n = int(input().strip())
+    except EOFError:
+        return
 
     dp0 = 0
     dp1 = 0
@@ -23,4 +21,4 @@ def solve():
 
 
 if __name__ == "__main__":
-    solve()
+    main()

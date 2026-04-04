@@ -1,6 +1,3 @@
-import sys
-
-
 def minimum_cable_length(state, dist):
     n = len(state)
     on_indices = [i for i, value in enumerate(state) if value == 1]
@@ -29,8 +26,20 @@ def minimum_cable_length(state, dist):
     return answer
 
 
+def read_tokens():
+    tokens = []
+    try:
+        while True:
+            parts = input().split()
+            if parts:
+                tokens.extend(map(int, parts))
+    except EOFError:
+        pass
+    return tokens
+
+
 def parse_input():
-    tokens = list(map(int, sys.stdin.buffer.read().split()))
+    tokens = read_tokens()
     if not tokens:
         return [], []
 

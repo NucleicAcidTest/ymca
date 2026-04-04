@@ -1,5 +1,4 @@
 import math
-import sys
 
 
 def is_perfect_number(n):
@@ -22,11 +21,14 @@ def is_perfect_number(n):
 
 
 def main():
-    data = sys.stdin.read().strip()
-    if not data:
+    try:
+        data = []
+        while not data:
+            data = input().split()
+    except EOFError:
         return
 
-    n = int(data.split()[0])
+    n = int(data[0])
     print(is_perfect_number(n))
 
 

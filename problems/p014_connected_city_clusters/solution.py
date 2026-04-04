@@ -1,6 +1,3 @@
-import sys
-
-
 def count_clusters(matrix):
     n = len(matrix)
     visited = [False] * n
@@ -27,7 +24,14 @@ def count_clusters(matrix):
 
 
 def main():
-    tokens = list(map(int, sys.stdin.buffer.read().split()))
+    tokens = []
+    try:
+        while True:
+            parts = input().split()
+            if parts:
+                tokens.extend(map(int, parts))
+    except EOFError:
+        pass
     if not tokens:
         return
 
