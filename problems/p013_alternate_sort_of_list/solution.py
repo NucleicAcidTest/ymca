@@ -1,20 +1,14 @@
-import sys
+def main() -> None:
+    size = int(input().strip())
+    numbers = list(map(int, input().strip().split()))
 
-
-def alternate_sort(values):
-    values.sort()
-    return values[::2]
-
-
-def main():
-    data = list(map(int, sys.stdin.buffer.read().split()))
-    if not data:
-        return
-
-    n = data[0]
-    arr = data[1:1 + n]
-    result = alternate_sort(arr)
+    numbers.sort()
+    result = numbers[:size:2]
     print(" ".join(map(str, result)))
+
+
+def solve():
+    main()
 
 
 if __name__ == "__main__":

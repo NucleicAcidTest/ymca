@@ -636,5 +636,38 @@
       "A visible predefined case with 4 and 2 2 2 2 returns 8."
     ],
     "path": "problems/p021_maximum_trading_days_without_same_town/solution.py"
+  },
+  {
+    "problem_id": "p022",
+    "slug": "shortest_route_with_magic_spell",
+    "title": "Shortest Route With Magic Spell",
+    "status": "solved",
+    "tags": [
+      "graph",
+      "shortest-path",
+      "dijkstra",
+      "state-space"
+    ],
+    "match_hints": [
+      "the first line consists of five space-separated integers n m A B K",
+      "the next m lines consist of three space-separated integers u v and w for the length of the bidirectional road between the cities",
+      "print the length of the shortest route between the two given cities after performing the magic spell K number of times",
+      "if no path exists print -1",
+      "there are two possible routes between 0 and 3 and making edge 4 to 3 free changes the minimum distance to 1"
+    ],
+    "sample_input_prefix": [
+      "5 5 0 3 1",
+      "0 1 1",
+      "0 4 1",
+      "1 2 2"
+    ],
+    "sample_output": "1",
+    "notes": [
+      "Run Dijkstra on an expanded state space where each state stores the current city and how many spells have been used so far.",
+      "Traversing an edge can either pay its weight normally or, if there is remaining spell budget, traverse it with added cost 0.",
+      "The screenshot uses Python 3.12 and an input()-style template with Write your code here.",
+      "A second visible predefined case with 4 2 0 2 1 and roads 0 1 5 / 2 3 6 returns -1."
+    ],
+    "path": "problems/p022_shortest_route_with_magic_spell/solution.py"
   }
 ]

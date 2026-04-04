@@ -1,4 +1,4 @@
-from problems.p021_maximum_trading_days_without_same_town.solution import solve
+from problems.p022_shortest_route_with_magic_spell.solution import solve
 
 
 if __name__ == "__main__":

@@ -45,6 +45,13 @@ Most problems in this repo come from similar coding-assessment screenshots. Read
 
 For this repository, treat the visible assessment language as contextual evidence, not the default output language. The default solution language for `shl` archive work is Python 3.12 unless the user explicitly asks for another language or explicitly asks for a direct submission snippet matching the screenshot language.
 
+For Python screenshot problems in this repository, treat the visible template shape as a hard constraint, not a style preference:
+
+- default to `input()`-based line reading
+- include a `main()` function in archived Python solutions
+- keep an existing visible `main()` shape when the screenshot shows one
+- only switch to bulk `sys.stdin.buffer.read()` parsing when the screenshot or problem format clearly requires it
+
 3. Bottom test area:
 - predefined test inputs
 - expected outputs
@@ -132,6 +139,7 @@ Only do this section when the request clearly asks for it, or after a lookup mis
 - only switch to the screenshot language when the user explicitly asks for that language or asks for a direct submission snippet that must match the visible platform language
 - match the visible assessment template when one exists, but do not let the visible language override the repository default on its own
 - use `input()`-style line reading by default for these screenshot-based tasks unless the visible template clearly expects EOF-style reading
+- archived Python solutions should include `main()` by default, even when the screenshot only shows a blank `Write your code here` area
 - keep `main` unchanged when the screenshot already provides one
 - write code only under `Write your code here` when the user asks for direct submission format
 - do not add debug prints, prompts, or extra comments
@@ -184,10 +192,23 @@ If lookup fails and the workflow continues into solving:
 - Prefer the visible platform template over personal style only after the output language is settled.
 - Do not infer Java, C++, or another language purely from the screenshot selector when the task is repo-centric lookup/solve work.
 - For Python assessment screenshots, default to simple `input()` parsing unless the visible code or problem format clearly needs something else.
+- For archived Python answers, include a `main()` function by default and call it from the usual `if __name__ == "__main__":` guard.
 - Keep existing function names and `main` structure when visible.
 - Respect the shown language version.
 - Prefer readable and submission-safe code over cleverness.
 - Verify against the visible predefined tests before archiving.
+
+## Python Output Contract
+
+When this skill produces or overwrites an archived Python solution for a screenshot-based SHL problem, the default contract is:
+
+- use `input()` / `input().split()` style parsing unless the statement clearly forces another format
+- define `main()`
+- keep `if __name__ == "__main__": main()`
+- avoid replacing a visible `main()`-based template with buffer-wide parsing just for convenience
+- if a helper such as `solve()` is added, it should delegate to `main()` rather than replace it
+
+If you are about to return or archive a Python solution that does not satisfy this contract, stop and fix the code first.
 
 ## Response Style
 
@@ -207,6 +228,8 @@ If lookup fails and the workflow continues into solving:
 - The archived solution produces the expected sample output.
 - `tests/test_lookup.py` still passes.
 - New wording variants that failed before are now discoverable.
+- Any archived Python solution for a screenshot-based problem uses `input()` by default unless there was a concrete reason not to.
+- Any archived Python solution for a screenshot-based problem has a `main()` function and standard `__main__` guard.
 
 ## Repo-Specific Notes
 

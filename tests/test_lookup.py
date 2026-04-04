@@ -186,6 +186,23 @@ class ProblemLookupTests(unittest.TestCase):
         self.assertEqual(result.problem_id, "p021")
         self.assertIn("2 * (total - mx) + 1", result.solution_text)
 
+    def test_finds_shortest_route_with_magic_spell_problem(self) -> None:
+        lookup = self._make_lookup()
+        query = """
+        The first line consists of five space-separated integers n m A B K representing the number of cities,
+        the number of roads, the source city, the destination city, and the number of times a magician can
+        perform a magic spell. The next m lines each contain u v w for a bidirectional road. Print the length
+        of the shortest route between the two given cities after performing the magic spell K number of times,
+        or -1 if no path exists. In the visible example, 5 5 0 3 1 with roads 0 1 1, 0 4 1, 1 2 2, 2 3 4,
+        4 3 7 returns 1.
+        """
+
+        result = lookup.lookup(query)
+
+        self.assertIsNotNone(result)
+        self.assertEqual(result.problem_id, "p022")
+        self.assertIn("used < limit", result.solution_text)
+
 
 if __name__ == "__main__":
     unittest.main()
