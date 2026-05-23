@@ -1,0 +1,4 @@
+interface:
+  display_name: "Java SHL Coding Assessment"
+  short_description: "Solve SHL coding tasks in compact Java 21"
+  default_prompt: "Use $java-shl-coding-assessment to solve this SHL coding problem in compact Java 21 with JUnit 5 tests."
