@@ -46,7 +46,10 @@ Do not rename or reshape visible template methods just to satisfy style rules.
 - Include all necessary imports in full-program answers.
 - Prefer exact module imports such as `import sys`; never use wildcard imports.
 - Preserve visible `Solution`, method names, parameters, return type, `main`, and surrounding template.
-- If `Write your code here` is visible and the user asks for a fill-in answer, return only code for that region.
+- If `Write your code here` is visible and no required function/class signature is shown, return a complete pasteable block for that region with a `main()` entry point.
+- If `Write your code here` is inside an existing function, class, or platform-owned `main`, return only the indented body that belongs there.
+- For Python answers, all executable reading, computing, and printing must run inside `main()` unless a visible platform-owned method is the required entry point.
+- Top-level executable code is limited to imports, constants, function/class definitions, and `if __name__ == "__main__": main()`.
 - Do not add prompts, debug output, explanatory prints, or comments.
 
 5. Verify before responding.
@@ -64,6 +67,9 @@ When the template is not fully visible and a full program is needed:
 - End with `if __name__ == "__main__": main()`.
 - `Solution` methods return results; `main` parses input and prints the final required output.
 - Final required output may use `print`. Debug or prompt prints are forbidden.
+- For SHL screenshots that show only sample placeholder code plus `# Write your code here`, treat the answer as a pasteable mini program and use `main()` unless the visible template forbids it.
+- Keep all stdin parsing and final printing inside `main()` unless an existing platform function signature requires another structure.
+- Before responding, reject and rewrite any full-program snippet that reads stdin, computes the answer, or prints at top level outside `main()`.
 
 ## Console Input Rules
 
@@ -123,5 +129,6 @@ When the template is not fully visible and a full program is needed:
 - Do not use EOF-style parsing when enough input can be determined from earlier lines.
 - Do not answer SHL custom-test snippets with `readlines()` or stdin iteration when `readline()` can read a complete case.
 - Do not replace a visible `main` or method signature.
+- Do not leave full-program SHL answers as loose top-level parsing code when a `main()` wrapper can be pasted into the visible region.
 - Do not let style rules break platform-required names.
 - Do not stop after matching the sample; check degenerate and boundary cases first.
