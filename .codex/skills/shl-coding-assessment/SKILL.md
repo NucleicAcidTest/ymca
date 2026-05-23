@@ -69,11 +69,13 @@ When the template is not fully visible and a full program is needed:
 
 - Prefer `sys.stdin.buffer.readline()` when the number of needed lines or tokens is fixed or can be inferred.
 - With `readline()`, read until enough data is collected, then compute, print, and return immediately.
+- Do not use `sys.stdin.buffer.readlines()`, `list(sys.stdin...)`, or stdin iteration for ordinary SHL fixed-format snippets; these wait for EOF in manual custom tests.
 - Use `sys.stdin.buffer.read()` only when the input scale is large and batch parsing is clearly more appropriate.
 - If `read()` is used, remember that local manual console tests need EOF before output appears.
 - Do not use `input()` unless the prompt is explicitly interactive or the user asks for it.
 - Maintain a line or token buffer based on the problem's input format.
 - Once one non-multiple-test case is complete, compute, print the answer, and return.
+- If screenshot text and predefined tests imply different but compatible layouts, support both with line-by-line parsing that stops as soon as one complete case is available.
 - If the statement clearly defines multiple test cases, process exactly the specified number of cases, print required outputs, and return.
 - Ignore blank lines when the format allows whitespace noise.
 - Support extra spaces between values.
@@ -119,6 +121,7 @@ When the template is not fully visible and a full program is needed:
 - Do not infer Python template details from a Java screenshot.
 - Do not treat scroll screenshots of the same page as separate tasks.
 - Do not use EOF-style parsing when enough input can be determined from earlier lines.
+- Do not answer SHL custom-test snippets with `readlines()` or stdin iteration when `readline()` can read a complete case.
 - Do not replace a visible `main` or method signature.
 - Do not let style rules break platform-required names.
 - Do not stop after matching the sample; check degenerate and boundary cases first.
